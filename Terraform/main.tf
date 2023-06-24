@@ -20,3 +20,12 @@ resource "aws_s3_bucket" "b" {
     Environment = "Dev"
   }
 }
+
+resource "aws_s3_bucket" "b1" {
+  bucket = "mybucketkonuedemo12"
+
+  tags = {
+    Name        = "My bucket"
+    Environment = "Dev"
+  }
+}
