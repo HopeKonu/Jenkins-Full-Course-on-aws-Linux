@@ -21,11 +21,24 @@ resource "aws_s3_bucket" "b" {
   }
 }
 
-resource "aws_s3_bucket" "b1" {
-  bucket = "mybucketkonuedemo12"
+
+
+
+resource "aws_vpc" "main" {
+  cidr_block       = "10.0.0.0/16"
+  instance_tenancy = "default"
 
   tags = {
-    Name        = "My bucket"
-    Environment = "Dev"
+    Name = "jenkins-vpc"
   }
 }
+
+resource "aws_instance" "web" {
+  ami           = "ami-022e1a32d3f742bd8"
+  instance_type = "t3.micro"
+
+  tags = {
+    Name = "konuhopejenkins"
+  }
+}
+
